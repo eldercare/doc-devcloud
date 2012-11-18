@@ -13,7 +13,7 @@ MAKE_METHOD="html"
 
 mkdir -p $DEPLOY_DIR
 
-if [ ! -d $DEPLOY_DIR/.git ]
+if [[ ! -d $DEPLOY_DIR/.git ]]
 then
   cd $DEPLOY_DIR
   git init
@@ -25,9 +25,9 @@ fi
 # Checkout git branch "gh-pages" in the current repository deployment
 
 cd $DEPLOY_DIR
-if [ ! "$(git branch | grep \* | awk '{print $2}')" = $DEPLOY_BRANCH ]
+if [[ ! "$(git branch | grep \* | awk '{print $2}')" = $DEPLOY_BRANCH ]]
 then
-  if [ "$(git branch -lr | grep $DEPLOY_BRANCH)" ]
+  if [[ "$(git branch -lr | grep $DEPLOY_BRANCH)" ]]
   then
     git checkout $DEPLOY_BRANCH
   else
@@ -38,7 +38,7 @@ cd ..
 
 # Prevent jekyll markup interpretation of directories beginning "_"
 
-if [ ! -e "$DEPLOY_DIR/.nojekyll" ]
+if [[ ! -e "$DEPLOY_DIR/.nojekyll" ]]
 then
   touch "$DEPLOY_DIR/.nojekyll"
 fi
@@ -53,14 +53,14 @@ cd ..
 
 # Compile fresh output for one or more books and copy to deployment folder
 
-if [ "$SECTIONS" = "" ]
+if [[ "$SECTIONS" = "" ]]
 then
   make clean $MAKE_METHOD
   cp -R _build/$MAKE_METHOD/* ./$DEPLOY_DIR
 else
   for DIR in $SECTIONS
   do
-    if [ -d $DIR ]
+    if [[ -d $DIR ]]
     then
       cd $DIR
       make clean $MAKE_METHOD
@@ -72,17 +72,17 @@ fi
 
 # Add downloads if they exist
 
-if [ -d $DOWNLOADS_DIR ]
+if [[ -d $DOWNLOADS_DIR ]]
 then
   cp -R $DOWNLOADS_DIR $DEPLOY_DIR
 fi
 
 # Add static content (remove CNAME if not garlovel)
 
-if [ -d $INCLUDE_DIR ]
+if [[ -d $INCLUDE_DIR ]]
 then
   cp -R $INCLUDE_DIR/* $DEPLOY_DIR
-  if [ "$DEPLOY_GIT" == "${DEPLOY_GIT/garlovel/}" ]
+  if [[ "$DEPLOY_GIT" == "${DEPLOY_GIT/garlovel/}" ]]
   then
     rm $DEPLOY_DIR/CNAME
   fi
@@ -90,12 +90,12 @@ fi
 
 # Deploy the repository branch
 
-if [ -d $DEPLOY_DIR ]
+if [[ -d $DEPLOY_DIR ]]
 then
   cd $DEPLOY_DIR
   git add .
   git commit -a -m "Deployed documentation"
-  git push origin $DEPLOY_BRANCH
+  git push -u origin $DEPLOY_BRANCH
   cd ..
 fi
 
