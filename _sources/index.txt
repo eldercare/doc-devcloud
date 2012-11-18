@@ -8,6 +8,7 @@
 Welcome to Cloud Development's documentation!
 =============================================
 
+:ref:`Introduction to Cloud Development <introduction>`.
 #. Topic 1: :ref:`Setting up an account on Google Gmail <setup_gmail>`.
 #. Topic 2: :ref:`Setting up an account on GitHub <setup_github>`.
 #. Topic 3: :ref:`Setting up an account on Heroku <setup_heroku>`.
