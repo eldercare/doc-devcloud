@@ -4,7 +4,7 @@
  Using Cloud9
 #############################
 
-.. note:: The Cloud9 editor has a simple commandline space at the bottom, as 
+.. note:: The Cloud9 editor has a simple command line space at the bottom, as 
   well as a complete Linux console terminal. When using cut-and-paste to 
   execute commands, paste into the editor command line, as the terminal window 
   does not support pasting.
