@@ -21,8 +21,6 @@
 # static folder content
 # *static/*
 */*static/*
-# *include/*
-*/*include/*
 
 # keep directories which include .gitkeep
 !.git_keep

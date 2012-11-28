@@ -4,6 +4,11 @@
  Using Cloud9
 #############################
 
+.. note:: The Cloud9 editor has a simple commandline space at the bottom, as 
+  well as a complete Linux console terminal. When using cut-and-paste to 
+  execute commands, paste into the editor command line, as the terminal window 
+  does not support pasting.
+
 Cloud9 is a virtual Linux development environment for projects. Project code 
 is hosted on a remote repository at either GitHub or BitBucket, and a working 
 copy of a project repository will be cloned into the Cloud9 development space. 
@@ -110,8 +115,21 @@ locally, then push the content commits to the remote master::
 
   git push
 
-.. Note::
+.. Note:: If git requires a user password in the :command:`git push` command,
+  then an ssh key is missing at GitHub. Follow GitHub directions to add the 
+  missing key. 
 
-  If git requires a user password in the :command:`git push` command, then an 
-  ssh key is missing at GitHub. Follow GitHub directions to add the missing 
-  key. 
+Upstream Repositories
+=============================
+
+When a repository is a fork of a master, changes to the master can be updated 
+to the fork as follows. First, an ``upstream`` remote must be added::
+
+  git remote add upstream __remotename__
+
+Then synchronize the local repository with the commands::
+
+  git commit -a "commit current changes"
+  git pull upstream master
+
+Finally, refresh the file tree view in cloud9 to show new or changed files.
