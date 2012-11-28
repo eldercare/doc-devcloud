@@ -38,7 +38,7 @@ Download Files to Include
 
 We wish to include a series of files in this project:
 
-+ :download:`.gitignore for Sphinx projects <_downloads/.gitignore>`
++ :download:`.gitignore for Sphinx projects <_downloads/gitignore>`
 + :download:`Adding documentation to a code project <_downloads/docbranch-add.sh>`
 + :download:`Starting a documentation project <_downloads/docproject-start.sh>`
 + :download:`Deploy documentation to GitHub gh-pages <_downloads/github-deploy.sh>`
@@ -46,7 +46,7 @@ We wish to include a series of files in this project:
 The web browser downloads files to a local device, not to the Cloud9 workspace. 
 The Linux :command:`wget` command can return these files to Cloud9::
 
-  wget http://vstem-davenport.github.com/doc-devcloud/_downloads/.gitignore
+  wget http://vstem-davenport.github.com/doc-devcloud/_downloads/gitignore -O .gitignore
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/docbranch-add.sh
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/github-deploy.sh
