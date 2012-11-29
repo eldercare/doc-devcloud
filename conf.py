@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Cloud Development documentation build configuration file, created by
-# sphinx-quickstart on Fri Nov  9 13:50:37 2012.
+# sphinx-quickstart on Thu Nov 29 10:59:32 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = []
+extensions = ['sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Cloud Development'
-copyright = u'2012, Gerald Lovel'
+copyright = u'2012, Gerald Lovel, Julia Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -141,7 +141,7 @@ html_static_path = ['_static']
 #html_domain_indices = True
 
 # If false, no index is generated.
-#html_use_index = True
+html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
@@ -184,7 +184,7 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'CloudDevelopment.tex', u'Cloud Development Documentation',
-   u'Gerald Lovel', 'manual'),
+   u'Gerald Lovel, Julia Lovel', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -214,7 +214,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'clouddevelopment', u'Cloud Development Documentation',
-     [u'Gerald Lovel'], 1)
+     [u'Gerald Lovel, Julia Lovel'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -228,7 +228,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'CloudDevelopment', u'Cloud Development Documentation',
-   u'Gerald Lovel', 'CloudDevelopment', 'One line description of project.',
+   u'Gerald Lovel, Julia Lovel', 'CloudDevelopment', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -240,3 +240,50 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
+
+
+# -- Options for Epub output ---------------------------------------------------
+
+# Bibliographic Dublin Core info.
+epub_title = u'Cloud Development'
+epub_author = u'Gerald Lovel, Julia Lovel'
+epub_publisher = u'Gerald Lovel, Julia Lovel'
+epub_copyright = u'2012, Gerald Lovel, Julia Lovel'
+
+# The language of the text. It defaults to the language option
+# or en if the language is not set.
+#epub_language = ''
+
+# The scheme of the identifier. Typical schemes are ISBN or URL.
+#epub_scheme = ''
+
+# The unique identifier of the text. This can be a ISBN number
+# or the project homepage.
+#epub_identifier = ''
+
+# A unique identification for the text.
+#epub_uid = ''
+
+# A tuple containing the cover image and cover page html template filenames.
+#epub_cover = ()
+
+# HTML files that should be inserted before the pages created by sphinx.
+# The format is a list of tuples containing the path and title.
+#epub_pre_files = []
+
+# HTML files shat should be inserted after the pages created by sphinx.
+# The format is a list of tuples containing the path and title.
+#epub_post_files = []
+
+# A list of files that should not be packed into the epub file.
+#epub_exclude_files = []
+
+# The depth of the table of contents in toc.ncx.
+#epub_tocdepth = 3
+
+# Allow duplicate toc entries.
+#epub_tocdup = True
+
+
+# Example configuration for intersphinx: refer to the Python standard library.
+intersphinx_mapping = {'http://docs.python.org/': None}
