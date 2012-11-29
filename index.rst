@@ -22,7 +22,6 @@ Welcome to Cloud Development's documentation!
 ----------
 
 .. toctree::
-   :numbered:
    :maxdepth: 2
    :glob:
 
