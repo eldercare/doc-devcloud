@@ -8,24 +8,22 @@
 Welcome to Cloud Development's documentation!
 =============================================
 
-:ref:`Introduction to Cloud Development <introduction>`.
+| :ref:`Introduction to Cloud Development <introduction>`.
+| :ref:`Topic 1: Setting up a Google Gmail account <setup_gmail>`.
+| :ref:`Topic 2: Setting up a GitHub account <setup_github>`.
+| :ref:`Topic 3: Setting up a Heroku account <setup_heroku>`.
+| :ref:`Topic 4: Setting up a Cloud9 account <setup_cloud9>`.
+| :ref:`Topic 5: Setting up other accounts <setup_other>`.
+| :ref:`Topic 6: Creating a repository at GitHub <use_github>`.
+| :ref:`Topic 7: Using Cloud9 for web development <use_cloud9>`.
+| :ref:`Topic 8: Publishing Sphinxdocs on GitHub <use_sphinxdoc>`.
+| :ref:`Topic 9: Deploying a Rails App to Heroku <use_heroku>`.
 
-#. Topic 1: :ref:`Setting up an account on Google Gmail <setup_gmail>`.
-#. Topic 2: :ref:`Setting up an account on GitHub <setup_github>`.
-#. Topic 3: :ref:`Setting up an account on Heroku <setup_heroku>`.
-#. Topic 4: :ref:`Setting up an account on Cloud9 <setup_cloud9>`.
-
-#. Topic 6: :ref:`Creating a repository at GitHub <use_github>`.
-#. Topic 7: :ref:`Using Cloud9 for web development <use_cloud9>`.
-#. Topic 8: :ref:`Publishing on GitHub with Restructured Text <use_documents>`.
-#. Topic 9: :ref:`Deploying an application to Heroku <use_heroku>`.
-
-
-Table of Contents:
-====================
+----------
 
 .. toctree::
+   :numbered:
    :maxdepth: 2
    :glob:
-   
+
    [0-9]*

@@ -1,12 +1,15 @@
-.. _use_documents:
+.. _use_sphinxdoc:
 
 #############################
- Sample Documentation
+ Documentation Sample Project
 #############################
 
-This sample will create a new documentation project for a student Journal.
+This exercise will create a new documentation project for a student Journal.
 
-In GitHub Account
+Create a Project Workspace
+=============================
+
+In Your GitHub Account
 -----------------------------
 
 Create a new repository in GitHub, naming it :file:`doc-journal`.
@@ -15,7 +18,7 @@ Create a new repository in GitHub, naming it :file:`doc-journal`.
 + Do not add a :file:`.gitignore` now.
 + Click :guilabel:`create repository`.
 
-In Cloud9 Account
+In Your Cloud9 Account
 -----------------------------
 
 + At the top of the left menu, click on :guilabel:`Your Account`.
@@ -25,7 +28,7 @@ In Cloud9 Account
 + In the :guilabel:`Clone from URL` dialog, click button :guilabel:`CREATE`.
 + Click the :guilabel:`START EDITING` button to open your project workspace.
 
-Cloud9 Project Workspace
+Install Sphinxdoc in Cloud9
 -----------------------------
 
 Sphinxdoc documenation tools are installed using python package manager
@@ -36,20 +39,28 @@ Sphinxdoc documenation tools are installed using python package manager
 Download Files to Include
 -----------------------------
 
-We wish to include a series of files in this project:
+We wish to include some files in this project which are downloadable from the 
+following links:
 
 + :download:`gitignore for Sphinx projects <_downloads/.gitignore>`
 + :download:`Adding documentation to a code project <_downloads/docbranch-add.sh>`
 + :download:`Starting a documentation project <_downloads/docproject-start.sh>`
 + :download:`Deploy documentation to GitHub gh-pages <_downloads/github-deploy.sh>`
 
-The web browser downloads files to a local device, not to the Cloud9 workspace. 
-The Linux :command:`wget` command can return these files to Cloud9::
+Now here is the problem: the web browser downloads files to a local device, not 
+to the Cloud9 workspace. To return files to Cloud9, use the Linux 
+:command:`wget` command instead. Copy and paste the following commands into the 
+console command line::
 
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/.gitignore
-  wget http://vstem-davenport.github.com/doc-devcloud/_downloads/docbranch-add.sh
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/github-deploy.sh
 
 After getting the files, click the :guilabel:`gear icon` on top of the left 
-sidebar, and choose :guilabel:`Refresh Project Tree`.
+sidebar, and choose :guilabel:`Refresh Project Tree` to see the additions.
+
+Initialize Sphinxdoc
+=============================
+
+
+
