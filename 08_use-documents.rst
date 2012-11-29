@@ -38,7 +38,7 @@ Download Files to Include
 
 We wish to include a series of files in this project:
 
-+ :download:`.gitignore for Sphinx projects <_downloads/gitignore>`
++ :download:`gitignore for Sphinx projects <_downloads/.gitignore>`
 + :download:`Adding documentation to a code project <_downloads/docbranch-add.sh>`
 + :download:`Starting a documentation project <_downloads/docproject-start.sh>`
 + :download:`Deploy documentation to GitHub gh-pages <_downloads/github-deploy.sh>`
