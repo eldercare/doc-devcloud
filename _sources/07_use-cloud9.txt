@@ -4,10 +4,10 @@
  Using Cloud9
 #############################
 
-.. note:: The Cloud9 editor has a simple commandline space at the bottom, as 
-  well as a complete Linux console terminal. When using cut-and-paste to 
-  execute commands, paste into the editor command line, as the terminal window 
-  does not support pasting.
+.. note:: The Cloud9 editor has a simple command line space at the bottom, as 
+   well as a complete Linux console terminal. The Firefox web browser will not 
+   paste into a Cloud9 terminal session. When using cut-and-paste to execute
+   commands, paste into the editor command line instead.
 
 Cloud9 is a virtual Linux development environment for projects. Project code 
 is hosted on a remote repository at either GitHub or BitBucket, and a working 
