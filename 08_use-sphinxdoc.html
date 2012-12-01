@@ -126,7 +126,7 @@
 <div class="section" id="install-sphinxdoc-in-project">
 <h3>Install Sphinxdoc in project<a class="headerlink" href="#install-sphinxdoc-in-project" title="Permalink to this headline">¶</a></h3>
 <p>Sphinxdoc documenation tools are installed using python package manager
-<tt class="docutils literal"><span class="pre">easy_install</span></tt>. At the console command line, type:</p>
+<tt class="docutils literal"><span class="pre">easy_install</span></tt>. Open a terminal to type in the command:</p>
 <div class="highlight-python"><pre>easy_install -U sphinx</pre>
 </div>
 </div>
@@ -142,14 +142,19 @@ following links:</p>
 </ul>
 <p>Now here is the problem: the web browser downloads files to a local device, not
 to the Cloud9 workspace. To return files to Cloud9, use the Linux command
-<strong class="command">wget</strong> instead. Copy and paste the following commands into the console
-command line:</p>
+<strong class="command">wget</strong> instead. Copy and paste the following commands into a terminal
+window or into the console command line beneath an edit window:</p>
 <div class="highlight-python"><pre>wget http://vstem-davenport.github.com/doc-devcloud/_downloads/.gitignore
 wget http://vstem-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
 wget http://vstem-davenport.github.com/doc-devcloud/_downloads/github-deploy.sh</pre>
 </div>
 <p>After getting the files, click the <em class="guilabel">gear icon</em> on top of the left
 sidebar, and choose <em class="guilabel">Refresh Project Tree</em> to see the additions.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last"><tt class="file docutils literal"><span class="pre">.gitignore</span></tt> is a hidden file. To see hidden files, click the
+<em class="guilabel">gear icon</em> and choose <em class="guilabel">Show Hidden Files</em>.</p>
+</div>
 </div>
 </div>
 <div class="section" id="initialize-sphinxdoc">
@@ -163,7 +168,7 @@ sidebar, and choose <em class="guilabel">Refresh Project Tree</em> to see the ad
 which are cloned from GitHub. Otherwise, the script requires the following
 two commands to be executed first:</p>
 <div class="last highlight-python"><pre>git init
-git remote add origin __username__@__remotename__.github</pre>
+git remote add origin git@github.com:__username__/__project__.git</pre>
 </div>
 </div>
 <p>The Sphinxdoc quickstart asks these questions:</p>
@@ -190,22 +195,28 @@ Create Makefile? (Y/n) [y]:
 Create Windows command file? (Y/n) [y]: __n__</pre>
 </div>
 <p>Be careful when answering these questions, as you get only one chance. Six
-questions have suggested answers surrounded by underlines; the rest are
-defaulted.</p>
+questions have suggested answers (surrounded by underlines); the rest are
+defaulted. Type your answers NOT INCLUDING UNDERLINES.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Sphinx appends <strong>&#8216;s Documentation</strong> to the <em class="guilabel">Project name</em>.
+For example, the entry <em>Cloud Development Journal</em> will become the title
+<strong>Cloud Development Journal&#8217;s Documentation</strong>.</p>
+</div>
 </div>
 <div class="section" id="write-documents">
 <h2>Write Documents<a class="headerlink" href="#write-documents" title="Permalink to this headline">¶</a></h2>
 <p>As with any discipline, software development requires a broad scope of
 expertise. Each area of computer knowledge addressed in vSTEM should have a
 corresponding document in your journal. In this way, your vSTEM journal will
-document your progress as an application developer in training.</p>
+document your progress as an application developer.</p>
 <div class="section" id="what-to-write">
 <h3>What to write<a class="headerlink" href="#what-to-write" title="Permalink to this headline">¶</a></h3>
 <p>Here is a list of suggested document topics for your journal:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col width="30%" />
+<col width="70%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Document identifier</th>
@@ -262,9 +273,10 @@ as you encounter information which needs to be organized in its own topic.</p>
 <p>Each journal document must be written as a plain text document in the editor,
 using proper ReStructuredText markup with added Sphinx features. Refer to the
 following resources to learn about document syntax:</p>
-<p>Vstem-Davenport&#8217;s <cite>basic guide to ReStructuredText syntax
-&lt;http://vstem-davenport.github.com/doc-publish/05_structure.html#structure&gt;</cite>.</p>
-<p>The official Sphinx-doc documentation site &lt;<a class="reference external" href="http://sphinx-doc.org/index.html">http://sphinx-doc.org/index.html</a>&gt;`.</p>
+<ul class="simple">
+<li>Vstem-Davenport&#8217;s <a class="reference external" href="http://vstem-davenport.github.com/doc-publish/05_structure.html">guide to basic ReStructuredText syntax</a>.</li>
+<li><a class="reference external" href="http://sphinx-doc.org/index.html">The official Sphinx-doc documentation site</a>.</li>
+</ul>
 </div>
 <div class="section" id="index-your-project">
 <h3>Index your project<a class="headerlink" href="#index-your-project" title="Permalink to this headline">¶</a></h3>
@@ -286,14 +298,14 @@ instructions to build part of the Table of Contents page:</p>
 <div class="section" id="archive-and-publish-site">
 <h2>Archive and Publish Site<a class="headerlink" href="#archive-and-publish-site" title="Permalink to this headline">¶</a></h2>
 <p>Normally a developer would compile work and display the result locally during
-development then work would be deployed only when completed satisfactorily. The
-Sphinx command to compile HTML pages from your documentation project is:</p>
+development. Then work would be deployed only when completed satisfactorily.
+The Sphinx command to compile HTML pages from your documentation project is:</p>
 <div class="highlight-python"><pre>make clean html</pre>
 </div>
 <p>This works at Cloud9, except for one thing: Cloud9 cannot directly display the
-compiled HTML output. Your project must be deployed as at GitHub as a
-<strong>gh-pages</strong> repository branch before it can be viewed. The command to deploy
-documentation in a <strong>gh-pages</strong> branch is:</p>
+compiled HTML output. Your project must be deployed at GitHub as a <strong>gh-pages</strong>
+repository branch before it can be viewed. The command to deploy documentation
+in a <strong>gh-pages</strong> branch is:</p>
 <div class="highlight-python"><pre>bash github-deploy.sh</pre>
 </div>
 <p>Now the sequence of steps to build and deploy output might be:</p>

@@ -32,7 +32,7 @@ Install Sphinxdoc in project
 -----------------------------
 
 Sphinxdoc documenation tools are installed using python package manager
-``easy_install``. At the console command line, type::
+``easy_install``. Open a terminal to type in the command::
 
   easy_install -U sphinx
 
@@ -49,8 +49,8 @@ following links:
 
 Now here is the problem: the web browser downloads files to a local device, not 
 to the Cloud9 workspace. To return files to Cloud9, use the Linux command
-:command:`wget` instead. Copy and paste the following commands into the console 
-command line::
+:command:`wget` instead. Copy and paste the following commands into a terminal 
+window or into the console command line beneath an edit window::
 
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/.gitignore
   wget http://vstem-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
@@ -58,6 +58,9 @@ command line::
 
 After getting the files, click the :guilabel:`gear icon` on top of the left 
 sidebar, and choose :guilabel:`Refresh Project Tree` to see the additions.
+
+.. hint:: :file:`.gitignore` is a hidden file. To see hidden files, click the 
+   :guilabel:`gear icon` and choose :guilabel:`Show Hidden Files`.
 
 Initialize Sphinxdoc
 =============================
@@ -71,7 +74,7 @@ In your Cloud9 doc-journal workspace, open a terminal and type the command::
    two commands to be executed first::
 
       git init
-      git remote add origin __username__@__remotename__.github
+      git remote add origin git@github.com:__username__/__project__.git
 
 The Sphinxdoc quickstart asks these questions::
    
@@ -98,8 +101,12 @@ The Sphinxdoc quickstart asks these questions::
   Create Windows command file? (Y/n) [y]: __n__
 
 Be careful when answering these questions, as you get only one chance. Six 
-questions have suggested answers surrounded by underlines; the rest are 
-defaulted. 
+questions have suggested answers (surrounded by underlines); the rest are 
+defaulted. Type your answers NOT INCLUDING UNDERLINES.
+
+.. hint:: Sphinx appends **'s Documentation** to the :guilabel:`Project name`. 
+   For example, the entry *Cloud Development Journal* will become the title
+   **Cloud Development Journal's Documentation**.
 
 Write Documents
 =============================
@@ -107,42 +114,42 @@ Write Documents
 As with any discipline, software development requires a broad scope of 
 expertise. Each area of computer knowledge addressed in vSTEM should have a 
 corresponding document in your journal. In this way, your vSTEM journal will 
-document your progress as an application developer in training. 
+document your progress as an application developer. 
 
 What to write
 -----------------------------
 
 Here is a list of suggested document topics for your journal:
 
-+-------------------------+---------------------------------------------------+
-| Document identifier     | Description or Title                              |
-+=========================+===================================================+
-| 01_cloud-services.rst   | Notes on cloud services                           |
-+-------------------------+---------------------------------------------------+
-| 02_bash-console.rst     | Linux BASH commands and their uses                |
-+-------------------------+---------------------------------------------------+
-| 03_bash-scripting.rst   | Writing programs as BASH scripts                  |
-+-------------------------+---------------------------------------------------+
-| 04_rst-syntax.rst       | ReStructuredText documentation syntax             |
-+-------------------------+---------------------------------------------------+
-| 05_doc-projects.rst     | Documentation project repositories                |
-+-------------------------+---------------------------------------------------+
-| 06_ruby-syntax.rst      | Ruby programming language syntax notes            |
-+-------------------------+---------------------------------------------------+
-| 07_rails-guide.rst      | Rails web application framework notes             |
-+-------------------------+---------------------------------------------------+
-| 08_ruby-gems.rst        | Notes on Ruby gems aded to projects               |
-+-------------------------+---------------------------------------------------+
-| 09_other-addins.rst     | Other program additions (Twitter Bootstrap, e.g.) |
-+-------------------------+---------------------------------------------------+
-| 10_ruby-projects.rst    | Ruby and Rails software projects                  |
-+-------------------------+---------------------------------------------------+
-| 11_html-css.rst         | HTML and CSS syntax and notes                     |
-+-------------------------+---------------------------------------------------+
-| 12_javascript.rst       | Javascript syntax and notes                       |
-+-------------------------+---------------------------------------------------+
-| 13_project-mgmt.rst     | Collaborative development project management      |
-+-------------------------+---------------------------------------------------+
++-----------------------+-----------------------------------------------------+
+| Document identifier   | Description or Title                                |
++=======================+=====================================================+
+| 01_cloud-services.rst | Notes on cloud services                             |
++-----------------------+-----------------------------------------------------+
+| 02_bash-console.rst   | Linux BASH commands and their uses                  |
++-----------------------+-----------------------------------------------------+
+| 03_bash-scripting.rst | Writing programs as BASH scripts                    |
++-----------------------+-----------------------------------------------------+
+| 04_rst-syntax.rst     | ReStructuredText documentation syntax               |
++-----------------------+-----------------------------------------------------+
+| 05_doc-projects.rst   | Documentation project repositories                  |
++-----------------------+-----------------------------------------------------+
+| 06_ruby-syntax.rst    | Ruby programming language syntax notes              |
++-----------------------+-----------------------------------------------------+
+| 07_rails-guide.rst    | Rails web application framework notes               |
++-----------------------+-----------------------------------------------------+
+| 08_ruby-gems.rst      | Notes on Ruby gems aded to projects                 |
++-----------------------+-----------------------------------------------------+
+| 09_other-addins.rst   | Other program additions (Twitter Bootstrap, e.g.)   |
++-----------------------+-----------------------------------------------------+
+| 10_ruby-projects.rst  | Ruby and Rails software projects                    |
++-----------------------+-----------------------------------------------------+
+| 11_html-css.rst       | HTML and CSS syntax and notes                       |
++-----------------------+-----------------------------------------------------+
+| 12_javascript.rst     | Javascript syntax and notes                         |
++-----------------------+-----------------------------------------------------+
+| 13_project-mgmt.rst   | Collaborative development project management        |
++-----------------------+-----------------------------------------------------+
 
 Do not start out by creating all these documents. Create journal documents only
 as you encounter information which needs to be organized in its own topic.
@@ -154,10 +161,9 @@ Each journal document must be written as a plain text document in the editor,
 using proper ReStructuredText markup with added Sphinx features. Refer to the  
 following resources to learn about document syntax:
 
-Vstem-Davenport's `basic guide to ReStructuredText syntax 
-<http://vstem-davenport.github.com/doc-publish/05_structure.html#structure>`.
++ Vstem-Davenport's `guide to basic ReStructuredText syntax <http://vstem-davenport.github.com/doc-publish/05_structure.html>`_.
 
-The official Sphinx-doc documentation site <http://sphinx-doc.org/index.html>`.
++ `The official Sphinx-doc documentation site <http://sphinx-doc.org/index.html>`_.
 
 Index your project
 -----------------------------
@@ -180,15 +186,15 @@ Archive and Publish Site
 =============================
 
 Normally a developer would compile work and display the result locally during 
-development then work would be deployed only when completed satisfactorily. The 
-Sphinx command to compile HTML pages from your documentation project is::
+development. Then work would be deployed only when completed satisfactorily. 
+The Sphinx command to compile HTML pages from your documentation project is:: 
 
   make clean html
 
 This works at Cloud9, except for one thing: Cloud9 cannot directly display the 
-compiled HTML output. Your project must be deployed as at GitHub as a 
-**gh-pages** repository branch before it can be viewed. The command to deploy 
-documentation in a **gh-pages** branch is::
+compiled HTML output. Your project must be deployed at GitHub as a **gh-pages** 
+repository branch before it can be viewed. The command to deploy documentation 
+in a **gh-pages** branch is::
 
   bash github-deploy.sh
 

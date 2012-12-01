@@ -97,3 +97,8 @@ websites would be helpful. Here are the requirements for this project:
 +-------------+----------------------------+-------------------------------------+ 
 | password    | 8+ char, 1 Upcase, 1 digit | D34rh34rt                           |
 +-------------+----------------------------+-------------------------------------+ 
+
+.. warning:: Emails from this project may be filtered by the start of the sender 
+   address, i.e., **vstem**. Use the email name format shown above. Do not use 
+   periods in your username, as this is prohibited by GitHub. Do not use spaces
+   in any of the entries above.
