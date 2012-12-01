@@ -43,6 +43,7 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Using Heroku</a><ul>
+<li><a class="reference internal" href="#create-heroku-server-instance">Create Heroku Server Instance</a></li>
 <li><a class="reference internal" href="#add-heroku-server-to-project">Add Heroku Server to Project</a></li>
 </ul>
 </li>
@@ -82,6 +83,9 @@
 <p>Heroku provides a free web application deployment services, integrated with
 the Cloud9 development environment through Git and GitHub. Following is a
 brief outline for configuring and deploying a project on Heroku.</p>
+<div class="section" id="create-heroku-server-instance">
+<h2>Create Heroku Server Instance<a class="headerlink" href="#create-heroku-server-instance" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="add-heroku-server-to-project">
 <h2>Add Heroku Server to Project<a class="headerlink" href="#add-heroku-server-to-project" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -90,7 +94,8 @@ brief outline for configuring and deploying a project on Heroku.</p>
 <li><p class="first">In the Cloud9 Project, choose <em class="menuselection">View ‣ Console</em> from the menu</p>
 </li>
 <li><p class="first">At the console command line, type:</p>
-<div class="highlight-python"><pre>git remote add heroku git@heroku.com:__heroku-server__.git</pre>
+<div class="highlight-python"><pre>c9pm install heroku
+git remote add heroku git@heroku.com:__heroku-server__.git</pre>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">__heroku-server__</span></tt> is replaced with your heroku server name</p>
 </li>

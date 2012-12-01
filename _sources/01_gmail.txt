@@ -54,6 +54,11 @@ Then fill out the **GMail Signup** form as follows:
 |**I agree to the Google . . .** | Check this box                     |
 +--------------------------------+------------------------------------+
 
+.. warning:: An account application with a birth year of 1999 or later will be 
+   rejected. Even worse, when using Google's Chrome browser, you will have to 
+   switch to a different browser such as Firefox to enter an application once a 
+   rejection occurs. 
+
 Click button :guilabel:`Next step` to complete the form. You will see your 
 profile page display. Again, click button :guilabel:`Next step` to continue. 
 A welcome page will display, showing that your new account is ready. 

@@ -8,6 +8,9 @@ Heroku provides a free web application deployment services, integrated with
 the Cloud9 development environment through Git and GitHub. Following is a 
 brief outline for configuring and deploying a project on Heroku.
 
+Create Heroku Server Instance
+=============================
+
 Add Heroku Server to Project
 =============================
 
@@ -15,6 +18,7 @@ Add Heroku Server to Project
 + In the Cloud9 Project, choose :menuselection:`View --> Console` from the menu
 + At the console command line, type::
   
+    c9pm install heroku
     git remote add heroku git@heroku.com:__heroku-server__.git
   
   where ``__heroku-server__`` is replaced with your heroku server name

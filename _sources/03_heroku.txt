@@ -13,7 +13,9 @@
 + Look for the message, "Confirm your account on Heroku"
 + Click the signup link to complete the Heroku signup
 
-.. image:: _images/03_heroku-2.png
+  .. note:: A sample email is displayed here:
+
+    .. image:: _images/03_heroku-2.png
 
 + The email link will take you to the Heroku Confirmation page
 + Enter your development password and confirm it
