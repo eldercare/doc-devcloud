@@ -23,7 +23,9 @@ Sign up for free Cloud9 developer workspace.
 + In your Gmail, read :guilabel:`Welcome to Cloud9! Please activate your account!`
 + Click the link to activate your account
 
-  .. image:: _images/04_cloud9-4.png
+  .. note:: Here is a smaple confirmation email:
+
+    .. image:: _images/04_cloud9-4.png
 
 + In the resulting webpage, enter your developer password and confirm it
 
