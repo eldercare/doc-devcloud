@@ -186,15 +186,39 @@ Archive and Publish Site
 =============================
 
 Normally a developer would compile work and display the result locally during 
-development. Then work would be deployed only when completed satisfactorily. 
-The Sphinx command to compile HTML pages from your documentation project is:: 
+development.
+
+Compiling and Previewing
+-----------------------------
+
+This works at Cloud9, too. The Sphinx command to compile HTML pages from your 
+documentation project is:: 
 
   make clean html
 
-This works at Cloud9, except for one thing: Cloud9 cannot directly display the 
-compiled HTML output. Your project must be deployed at GitHub as a **gh-pages** 
-repository branch before it can be viewed. The command to deploy documentation 
-in a **gh-pages** branch is::
+To view the documents you have built, open the :file:`_build/html/index.html` 
+file in your Cloud9 project workspace. Then select :menuselection:`Preview` 
+from the top menu.
+
+Committing Repository
+-----------------------------
+
+At the end of a day, or when a portion of work is finished, it should be 
+committed and pushed to the GitHub repository. Here are commands for that::
+
+  git add .
+  git status
+  git commit -m "commit message"
+  git push
+
+Most of these actions are available from the Cloud9 menu as well.
+
+Deploying
+-----------------------------
+
+Work would be deployed only when completed satisfactorily. Your project will be 
+deployed at GitHub as a **gh-pages** repository branch. The command to deploy 
+documentation in a **gh-pages** branch is::
 
   bash github-deploy.sh
 
@@ -207,11 +231,13 @@ Now the sequence of steps to build and deploy output might be:
 +-------------------------------+---------------------------------------------+
 | Check for compile errors      | ``make clean html``                         |
 +-------------------------------+---------------------------------------------+
+| Preview changes in browser    | cloud9 :menuselection:`Preview`             |
++-------------------------------+---------------------------------------------+
 | Add changes to git tracking   | ``git add .``                               |
 +-------------------------------+---------------------------------------------+
 | View repository status        | ``git status``                              |
 +-------------------------------+---------------------------------------------+
-| Commit changes to repository  | ``git commit -m \"commit message\"``        |
+| Commit changes to repository  | ``git commit -m "commit message"``          |
 +-------------------------------+---------------------------------------------+
 | Push to remote at GitHub      | ``git push``                                |
 +-------------------------------+---------------------------------------------+

@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Cloud Development 1.0 documentation" href="index.html" />
-    <link rel="next" title="Using Heroku" href="09_use-heroku.html" />
+    <link rel="next" title="Ruby on Rails Sample App" href="09_use-rubyonrails.html" />
     <link rel="prev" title="Using Cloud9" href="07_use-cloud9.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="09_use-heroku.html" title="Using Heroku"
+          <a href="09_use-rubyonrails.html" title="Ruby on Rails Sample App"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="07_use-cloud9.html" title="Using Cloud9"
@@ -61,7 +61,12 @@
 <li><a class="reference internal" href="#index-your-project">Index your project</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#archive-and-publish-site">Archive and Publish Site</a></li>
+<li><a class="reference internal" href="#archive-and-publish-site">Archive and Publish Site</a><ul>
+<li><a class="reference internal" href="#compiling-and-previewing">Compiling and Previewing</a></li>
+<li><a class="reference internal" href="#committing-repository">Committing Repository</a></li>
+<li><a class="reference internal" href="#deploying">Deploying</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -70,8 +75,8 @@
   <p class="topless"><a href="07_use-cloud9.html"
                         title="previous chapter">Using Cloud9</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="09_use-heroku.html"
-                        title="next chapter">Using Heroku</a></p>
+  <p class="topless"><a href="09_use-rubyonrails.html"
+                        title="next chapter">Ruby on Rails Sample App</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/08_use-sphinxdoc.txt"
@@ -298,14 +303,33 @@ instructions to build part of the Table of Contents page:</p>
 <div class="section" id="archive-and-publish-site">
 <h2>Archive and Publish Site<a class="headerlink" href="#archive-and-publish-site" title="Permalink to this headline">¶</a></h2>
 <p>Normally a developer would compile work and display the result locally during
-development. Then work would be deployed only when completed satisfactorily.
-The Sphinx command to compile HTML pages from your documentation project is:</p>
+development.</p>
+<div class="section" id="compiling-and-previewing">
+<h3>Compiling and Previewing<a class="headerlink" href="#compiling-and-previewing" title="Permalink to this headline">¶</a></h3>
+<p>This works at Cloud9, too. The Sphinx command to compile HTML pages from your
+documentation project is:</p>
 <div class="highlight-python"><pre>make clean html</pre>
 </div>
-<p>This works at Cloud9, except for one thing: Cloud9 cannot directly display the
-compiled HTML output. Your project must be deployed at GitHub as a <strong>gh-pages</strong>
-repository branch before it can be viewed. The command to deploy documentation
-in a <strong>gh-pages</strong> branch is:</p>
+<p>To view the documents you have built, open the <tt class="file docutils literal"><span class="pre">_build/html/index.html</span></tt>
+file in your Cloud9 project workspace. Then select <em class="menuselection">Preview</em>
+from the top menu.</p>
+</div>
+<div class="section" id="committing-repository">
+<h3>Committing Repository<a class="headerlink" href="#committing-repository" title="Permalink to this headline">¶</a></h3>
+<p>At the end of a day, or when a portion of work is finished, it should be
+committed and pushed to the GitHub repository. Here are commands for that:</p>
+<div class="highlight-python"><pre>git add .
+git status
+git commit -m "commit message"
+git push</pre>
+</div>
+<p>Most of these actions are available from the Cloud9 menu as well.</p>
+</div>
+<div class="section" id="deploying">
+<h3>Deploying<a class="headerlink" href="#deploying" title="Permalink to this headline">¶</a></h3>
+<p>Work would be deployed only when completed satisfactorily. Your project will be
+deployed at GitHub as a <strong>gh-pages</strong> repository branch. The command to deploy
+documentation in a <strong>gh-pages</strong> branch is:</p>
 <div class="highlight-python"><pre>bash github-deploy.sh</pre>
 </div>
 <p>Now the sequence of steps to build and deploy output might be:</p>
@@ -326,26 +350,30 @@ in a <strong>gh-pages</strong> branch is:</p>
 <tr class="row-odd"><td>Check for compile errors</td>
 <td><tt class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span> <span class="pre">html</span></tt></td>
 </tr>
-<tr class="row-even"><td>Add changes to git tracking</td>
+<tr class="row-even"><td>Preview changes in browser</td>
+<td>cloud9 <em class="menuselection">Preview</em></td>
+</tr>
+<tr class="row-odd"><td>Add changes to git tracking</td>
 <td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></tt></td>
 </tr>
-<tr class="row-odd"><td>View repository status</td>
+<tr class="row-even"><td>View repository status</td>
 <td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></tt></td>
 </tr>
-<tr class="row-even"><td>Commit changes to repository</td>
-<td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">\&quot;commit</span> <span class="pre">message\&quot;</span></tt></td>
+<tr class="row-odd"><td>Commit changes to repository</td>
+<td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;commit</span> <span class="pre">message&quot;</span></tt></td>
 </tr>
-<tr class="row-odd"><td>Push to remote at GitHub</td>
+<tr class="row-even"><td>Push to remote at GitHub</td>
 <td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt></td>
 </tr>
-<tr class="row-even"><td>Build and deploy gh-pages</td>
+<tr class="row-odd"><td>Build and deploy gh-pages</td>
 <td><tt class="docutils literal"><span class="pre">bash</span> <span class="pre">github-deploy.sh</span></tt></td>
 </tr>
-<tr class="row-odd"><td>View deployed site in browser</td>
+<tr class="row-even"><td>View deployed site in browser</td>
 <td><tt class="docutils literal"><span class="pre">http:__yourname__.github.com/__project__</span></tt></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 
@@ -359,7 +387,7 @@ in a <strong>gh-pages</strong> branch is:</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="09_use-heroku.html" title="Using Heroku"
+          <a href="09_use-rubyonrails.html" title="Ruby on Rails Sample App"
              >next</a></li>
         <li class="right" >
           <a href="07_use-cloud9.html" title="Using Cloud9"
