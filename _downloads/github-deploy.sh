@@ -11,7 +11,8 @@ FILE_SPHINX="conf.py"
 DIR_DOC="doc"
 DIR_DOWNLOADS="_downloads"
 DIR_DEPLOY="_deploy"
-DIR_INCLUDE="_static"
+DIR_STATIC="_static"
+DIR_INCLUDE="_include"
 MAKE_METHOD="html"
 
 # ===========function to build  github deployment in a folder==================
@@ -26,7 +27,10 @@ makedeployment () {
     cp -R $DIR_DOWNLOADS $DIR_OUT
   fi
 
-  # Add static content
+  # Add static content (static is link shared with all sections, include is not)
+  if [ -d $DIR_STATIC ] ; then
+    cp -R $DIR_STATIC/* $DIR_OUT
+  fi
   if [ -d $DIR_INCLUDE ] ; then
     cp -R $DIR_INCLUDE/* $DIR_OUT
   fi
@@ -141,7 +145,7 @@ else
     fi
   done
   if [[ -d 'master' ]] ; then
-    cp $DIR_DEPLOY/master/* $DIR_DEPLOY
+    cp -r $DIR_DEPLOY/master/* $DIR_DEPLOY
   fi
 fi
 
