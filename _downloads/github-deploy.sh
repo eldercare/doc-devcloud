@@ -140,6 +140,9 @@ else
       cd ..
     fi
   done
+  if [[ -d 'master' ]] ; then
+    cp $DIR_DEPLOY/master/* $DIR_DEPLOY
+  fi
 fi
 
 # if CNAME owner != remote deployer, remove CNAME
@@ -161,3 +164,5 @@ fi
 echo "Deployed! Be sure that your source changes are commited and pushed as well."
 
 # Authors: Gerald Lovel, gerald@lovels.us
+
+# 12/17/2012 - GARL -- Added copy master folder contents to $DIR_DEPLOY root
