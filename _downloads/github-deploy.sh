@@ -1,5 +1,5 @@
 #! /bin/bash
-# Script to deploy .rst documents in a git repository to github gh-pages
+# Script to deploy .rst documents in a git repository
 
 ######### VARIABLES
 
@@ -9,7 +9,7 @@ OWNER=""
 REMOTE=""
 SECTIONS=""
 MASTER="master"
-BRANCH_DEPLOY="gh-pages"
+BRANCH_DEPLOY="deploy"
 FILE_SPHINX="conf.py"
 DIR_DOC="doc"
 DIR_DOWNLOADS="_downloads"
@@ -17,6 +17,8 @@ DIR_DEPLOY="_deploy"
 DIR_STATIC="_static"
 DIR_INCLUDE="_include"
 MAKE_METHOD="html"
+GITHUB="gh-pages"
+HEROKU="master"
 
 # ===========function to build  github deployment in a folder==================
 
@@ -169,14 +171,32 @@ if [[ -d $DIR_DEPLOY ]] ; then
   cd $DIR_DEPLOY
   git add .
   git commit -a -m "Deployed documentation"
+  
+  # add branch name for deploy push
+  case $REMOTE in
+    *"github"*)  
+    BRANCH_DEPLOY=$BRANCH_DEPLOY:$GITHUB
+    ;;
+    *"heroku"*)
+    BRANCH_DEPLOY=$BRANCH_DEPLOY:$HEROKU
+    ;;
+    **)
+    echo "No target branch for the deployment. Exiting ..."
+    exit 1
+  esac
+  
+  echo "pushing origin to $BRANCH_DEPLOY"
   git push -u origin $BRANCH_DEPLOY
+
   cd ..
 fi
 
 ######### NORMAL EXIT
 
-echo "Deployed! Be sure that your source changes are commited and pushed as well."
+echo "Finished. Check all messages for possible errors."
+echo "Then commit and push source changes as well."
 
 # Authors: Gerald Lovel, gerald@lovels.us
 
 # 12/17/2012 - GARL -- Added copy master folder contents to $DIR_DEPLOY root
+# 02/20/2013 - GARL -- Added support for deployment to Heroku, Github, ...
