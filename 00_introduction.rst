@@ -23,8 +23,8 @@ programmers to use available computers whereever they are.
 Currently several cloud services are required to provide all the features a 
 programming team would require for web development. This document describes one 
 selection of cloud services which results in a flexible web programming 
-configuration. Other, possibly better, choices may exist, but that is a 
-discussion beyond the scope of this project.
+setup. Other, possibly better, choices may exist, but that discussion is beyond 
+the scope of this guide.
 
 Services Developers Need
 =============================
@@ -53,11 +53,9 @@ and the cloud services which emulate them are listed in the following table.
 | database (postgreSQL)           | Heroku     | https://heroku.com           |                           
 +---------------------------------+------------+------------------------------+
 
-.. note::
-
-  Heroku includes client services: the `Heroku Toolbelt
-  <https://devcenter.heroku.com/x?url=https%3A%2F%2Ftoolbelt.heroku.com%2F>`_, 
-  Foreman, and Git.
+.. note:: Heroku includes client services: the `Heroku Toolbelt
+   <https://devcenter.heroku.com/x?url=https%3A%2F%2Ftoolbelt.heroku.com%2F>`_, 
+   Foreman, and Git.
 
 Logins and Passwords
 =============================
@@ -91,14 +89,12 @@ websites would be helpful. Here are the requirements for this project:
 +-------------+----------------------------+-------------------------------------+ 
 | Identifier  | Proposed pattern           | Example                             | 
 +=============+============================+=====================================+ 
-| email name  | vstem.first.last@gmail.com | VSTEM.Dearheart.Davenport@gmail.com | 
+| email name  | ALT.first.last@gmail.com   | ALT.Dearheart.Davenport@gmail.com   | 
 +-------------+----------------------------+-------------------------------------+ 
-| username    | vstem-lastname             | vstem-davenport                     | 
+| username    | alt-lastname               | alt-davenport                       | 
 +-------------+----------------------------+-------------------------------------+ 
 | password    | 8+ char, 1 Upcase, 1 digit | D34rh34rt                           |
 +-------------+----------------------------+-------------------------------------+ 
 
-.. warning:: Emails from this project may be filtered by the start of the sender 
-   address, i.e., **vstem**. Use the email name format shown above. Do not use 
-   periods in your username, as this is prohibited by GitHub. Do not use spaces
-   in any of the entries above.
+.. warning:: Use the email name format shown above. Do not use periods in your 
+   username; this is prohibited. Do not use spaces in any of the entries above.

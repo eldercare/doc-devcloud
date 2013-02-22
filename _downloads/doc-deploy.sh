@@ -8,8 +8,9 @@ PROJECT=$1
 OWNER=""
 REMOTE=""
 SECTIONS=""
+BRANCH_DEPLOY=""
 MASTER="master"
-BRANCH_DEPLOY="deploy"
+DEPLOY="deploy"
 FILE_SPHINX="conf.py"
 DIR_DOC="doc"
 DIR_DOWNLOADS="_downloads"
@@ -50,7 +51,7 @@ if [[ $PROJECT = "" ]] ; then
   # project folder may be open already
   if [[ ! -d .git ]] ; then
     echo "Not in a project, or no project name given. Exiting ... "
-    exit
+    exit 1
   else
     PROJECT=${PWD##*/}
   fi
@@ -63,11 +64,11 @@ else
       cd $PROJECT
     else
       echo "Folder \"$PROJECT\" is not a git repository. Exiting ... "
-      exit
+      exit 1
     fi
   else
     echo "Project folder \"$PROJECT\" does not exist. Exiting ... "
-    exit
+    exit 1
   fi
 fi
 
@@ -78,7 +79,7 @@ set -- $(git remote -v)
 REMOTE=$2
 if [[ $REMOTE = "" ]] ; then
   echo "Project \"$PROJECT\" has no remote. Exiting ... "
-  exit
+  exit 1
 fi
 
 echo "Remote for project is $REMOTE"
@@ -90,21 +91,9 @@ if [[ ! -e $FILE_SPHINX ]] ; then
     PROJECT=$PROJECT/$DIR_DOC
     cd $DIR_DOC
   else
-    echo "No sphinxdoc configuration or document folder missing, exiting ..."
-    exit
+    echo "No sphinxdoc configuration or document folder missing, Exiting ..."
+    exit 1
   fi
-fi
-
-########## MAIN PROGRAM
-
-# Read CNAME owner for github deployment, in case there is one
-if [[ -e cnameowner ]] ; then
-  OWNER=$(<cnameowner)
-fi
-
-# if no sections specified, look for a file "sections" listing sections
-if [[ -e sections ]] ; then
-  SECTIONS+=" "$(<sections)
 fi
 
 # in the event it is missing, create a git project deployment folder
@@ -116,28 +105,59 @@ if [[ ! -d $DIR_DEPLOY/.git ]] ; then
   git init
   git commit --allow-empty -m "empty first commit"
   set -- $(git branch)
-  git branch -m $2 $BRANCH_DEPLOY
+  git branch -m $2 $DEPLOY
   git remote add origin $REMOTE
   echo "BRANCH is \"$(git branch -a)\""
-  echo "REMOTE is: "
-  echo $(git remote -v)
   git fetch origin
-  # Checkout git branch "gh-pages" in the current repository deployment
-  git checkout -b $BRANCH_DEPLOY
+  # git checkout -B $DEPLOY
+  # Save directory in git and Prevent jekyll markup interpretation
+  touch .gitkeep
+  touch .gitignore
+  touch .nojekyll
+  git add .
+  git commit -m "hidden control files"
   cd ..
 fi
 
-# Prevent jekyll markup interpretation of deployment directory
-touch "$DIR_DEPLOY/.nojekyll"
+# set branch name for deploy pull and push
+case $REMOTE in
+  *"github"*)  
+    BRANCH_DEPLOY=$GITHUB
+    ;;
+  *"heroku"*)
+    BRANCH_DEPLOY=$HEROKU
+    ;;
+  **)
+    echo "No target branch for the deployment. Exiting ..."
+    exit 1
+    ;;
+esac
+  
+########## MAIN PROGRAM
+
+echo "  --- MAIN PROGRAM ---"
+
+# Read CNAME owner for github deployment, in case there is one
+if [[ -e cnameowner ]] ; then
+  OWNER=$(<cnameowner)
+fi
+
+# if no sections specified, look for a file "sections" listing sections
+if [[ -e sections ]] ; then
+  SECTIONS+=" "$(<sections)
+fi
 
 # Clean the deployment folder and pull the repository branch
 rm -rf $DIR_DEPLOY/*
 cd $DIR_DEPLOY
-git pull origin $BRANCH_DEPLOY
+# fatal error returned if remote site does not include the deploy branch
+TEST=$(git branch -a)
+if [[ "$TEST" != "${TEST/$BRANCH_DEPLOY/}" ]] ; then
+  git pull -f origin $BRANCH_DEPLOY:$DEPLOY
+fi 
 cd ..
 
 # Compile fresh output for one or more books and copy to deployment folder
-
 if [[ "$SECTIONS" = "" ]] ; then
   DIR_OUT=$DIR_DEPLOY
   makedeployment
@@ -170,30 +190,18 @@ fi
 if [[ -d $DIR_DEPLOY ]] ; then
   cd $DIR_DEPLOY
   git add .
-  git commit -a -m "Deployed documentation"
-  
-  # add branch name for deploy push
-  case $REMOTE in
-    *"github"*)  
-    BRANCH_DEPLOY=$BRANCH_DEPLOY:$GITHUB
-    ;;
-    *"heroku"*)
-    BRANCH_DEPLOY=$BRANCH_DEPLOY:$HEROKU
-    ;;
-    **)
-    echo "No target branch for the deployment. Exiting ..."
-    exit 1
-  esac
-  
-  echo "pushing origin to $BRANCH_DEPLOY"
-  git push -u origin $BRANCH_DEPLOY
+  git commit -m "Deployed documentation"
+  git push -u origin $DEPLOY:$BRANCH_DEPLOY
+
+  echo "pushed to origin branch $DEPLOY:$BRANCH_DEPLOY"
 
   cd ..
 fi
 
 ######### NORMAL EXIT
 
-echo "Finished. Check all messages for possible errors."
+echo "  --- FINISHED ---"
+echo "Check all messages for possible errors."
 echo "Then commit and push source changes as well."
 
 # Authors: Gerald Lovel, gerald@lovels.us

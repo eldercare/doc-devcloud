@@ -1,5 +1,5 @@
 #! /bin/bash
-# Script to create directories for GitHub publishihg repositories
+# Script to create .rst documentation branch inside a project
 
 ######### VARIABLES
 
@@ -41,6 +41,9 @@ sphinxinit () {
     touch _static/.gitignore
     sed -i "s/  margin: 0px 80px 0px 80px/# margin: 0px 80px 0px 80px/" ./_static/sphinxdoc.css
   fi
+  # add entries for pseudo-dynamic deployment
+  touch _static/index.php
+  echo 'php_flag engine off' > _static/.htaccess
   # make fresh index html
   make clean html
 }
@@ -89,36 +92,54 @@ echo "Remote for project is $REMOTE"
 
 ########## MAIN PROGRAM
 
-# if no sections specified, look for a file \"sections\" listing sections
-if [[ -e sections ]] ; then
-  SECTIONS+=" "$(<sections)
-fi
+mkdir -p $BRANCH_DOC
+if [[ ! -d $BRANCH_DOC/.git ]] ; then
 
-# initialize main or subsections folders
-if [[ $SECTIONS = "" ]] ; then
-  sphinxinit
-else
-  CONFPY='\n\n''intersphinx_mapping = {'
-  mkdir _deploy
-  mkdir _static
-  touch conf.py
-  for SECT in $SECTIONS ; do
-    if [[ ! -d $SECT ]] ; then
-      mkdir $SECT
-      ln -s ${PWD}/_deploy ${PWD}/$SECT/_deploy
-      ln -s ${PWD}/_static ${PWD}/$SECT/_static
-    fi
-    cd $SECT
-    sphinxinit
-    cd ..
-    if [[ $SECT != $MASTER ]] ; then
-      CONFPY=${CONFPY}'\n'"   '$SECT': ('$SECT', '../_deploy/$SECT/objects.inv'),"
-    fi
-  done
-  CONFPY=${CONFPY}'\n'"}"
-  if [[ $SECT == $MASTER ]] ; then
-    echo -e ${CONFPY} >> $MASTER/conf.py
+  cd $BRANCH_DOC
+
+  # create doc folder with branch $BRANCH_DOC
+  git init
+  git commit --allow-empty -m "empty first commit"
+  set -- $(git branch)
+  git branch -m $2 $BRANCH_DOC
+  git remote add origin $REMOTE
+  echo "BRANCH is \"$(git branch -a)\""
+  git fetch origin
+
+  # if no sections specified, look for a file \"sections\" listing sections
+  if [[ -e sections ]] ; then
+    SECTIONS+=" "$(<sections)
   fi
+
+  # initialize main or subsections folders
+  if [[ $SECTIONS = "" ]] ; then
+    sphinxinit
+  else
+    CONFPY='\n\n''intersphinx_mapping = {'
+    mkdir _deploy
+    mkdir _static
+    touch conf.py
+    for SECT in $SECTIONS ; do
+      if [[ ! -d $SECT ]] ; then
+        mkdir $SECT
+        ln -s ${PWD}/_deploy ${PWD}/$SECT/_deploy
+        ln -s ${PWD}/_static ${PWD}/$SECT/_static
+      fi
+      cd $SECT
+      sphinxinit
+      cd ..
+      if [[ $SECT != $MASTER ]] ; then
+        CONFPY=${CONFPY}'\n'"   '$SECT': ('$SECT', '../_deploy/$SECT/objects.inv'),"
+      fi
+    done
+    CONFPY=${CONFPY}'\n'"}"
+    if [[ $SECT == $MASTER ]] ; then
+      echo -e ${CONFPY} >> $MASTER/conf.py
+    fi
+  fi
+
+  cd ..
+
 fi
 
 ######### NORMAL EXIT
@@ -137,3 +158,4 @@ echo "Edit index files to glob \"[0-9]*\"."
 exit
 
 # Authors: Gerald Lovel, gerald@lovels.us
+
