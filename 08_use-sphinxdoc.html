@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Cloud Development 1.0 documentation" href="index.html" />
-    <link rel="next" title="Ruby on Rails Sample App" href="09_use-rubyonrails.html" />
+    <link rel="next" title="Using Heroku" href="09_use-heroku.html" />
     <link rel="prev" title="Using Cloud9" href="07_use-cloud9.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="09_use-rubyonrails.html" title="Ruby on Rails Sample App"
+          <a href="09_use-heroku.html" title="Using Heroku"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="07_use-cloud9.html" title="Using Cloud9"
@@ -75,8 +75,8 @@
   <p class="topless"><a href="07_use-cloud9.html"
                         title="previous chapter">Using Cloud9</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="09_use-rubyonrails.html"
-                        title="next chapter">Ruby on Rails Sample App</a></p>
+  <p class="topless"><a href="09_use-heroku.html"
+                        title="next chapter">Using Heroku</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/08_use-sphinxdoc.txt"
@@ -141,17 +141,17 @@
 following links:</p>
 <ul class="simple">
 <li><a class="reference download internal" href="_downloads/.gitignore"><tt class="xref download docutils literal"><span class="pre">gitignore</span> <span class="pre">for</span> <span class="pre">Sphinx</span> <span class="pre">projects</span></tt></a></li>
-<li><a class="reference download internal" href="_downloads/docbranch-add.sh"><tt class="xref download docutils literal"><span class="pre">Adding</span> <span class="pre">documentation</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">code</span> <span class="pre">project</span></tt></a></li>
-<li><a class="reference download internal" href="_downloads/docproject-start.sh"><tt class="xref download docutils literal"><span class="pre">Starting</span> <span class="pre">a</span> <span class="pre">documentation</span> <span class="pre">project</span></tt></a></li>
-<li><a class="reference download internal" href="_downloads/github-deploy.sh"><tt class="xref download docutils literal"><span class="pre">Deploy</span> <span class="pre">documentation</span> <span class="pre">to</span> <span class="pre">GitHub</span> <span class="pre">gh-pages</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/doc-addbranch.sh"><tt class="xref download docutils literal"><span class="pre">Adding</span> <span class="pre">documentation</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">code</span> <span class="pre">project</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/doc-newproject.sh"><tt class="xref download docutils literal"><span class="pre">Starting</span> <span class="pre">a</span> <span class="pre">documentation</span> <span class="pre">project</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/doc-deploy.sh"><tt class="xref download docutils literal"><span class="pre">Deploy</span> <span class="pre">documentation</span> <span class="pre">to</span> <span class="pre">GitHub</span> <span class="pre">gh-pages</span></tt></a></li>
 </ul>
 <p>Now here is the problem: the web browser downloads files to a local device, not
 to the Cloud9 workspace. To return files to Cloud9, use the Linux command
 <strong class="command">wget</strong> instead. Copy and paste the following commands into a terminal
 window or into the console command line beneath an edit window:</p>
-<div class="highlight-python"><pre>wget http://vstem-davenport.github.com/doc-devcloud/_downloads/.gitignore
-wget http://vstem-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
-wget http://vstem-davenport.github.com/doc-devcloud/_downloads/github-deploy.sh</pre>
+<div class="highlight-python"><pre>wget http://alt-davenport.github.com/doc-devcloud/_downloads/.gitignore
+wget http://alt-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
+wget http://alt-davenport.github.com/doc-devcloud/_downloads/github-deploy.sh</pre>
 </div>
 <p>After getting the files, click the <em class="guilabel">gear icon</em> on top of the left
 sidebar, and choose <em class="guilabel">Refresh Project Tree</em> to see the additions.</p>
@@ -212,8 +212,8 @@ For example, the entry <em>Cloud Development Journal</em> will become the title
 <div class="section" id="write-documents">
 <h2>Write Documents<a class="headerlink" href="#write-documents" title="Permalink to this headline">¶</a></h2>
 <p>As with any discipline, software development requires a broad scope of
-expertise. Each area of computer knowledge addressed in vSTEM should have a
-corresponding document in your journal. In this way, your vSTEM journal will
+expertise. Each area of computer knowledge addressed here should have a
+corresponding document in your journal. In this way, your journal will
 document your progress as an application developer.</p>
 <div class="section" id="what-to-write">
 <h3>What to write<a class="headerlink" href="#what-to-write" title="Permalink to this headline">¶</a></h3>
@@ -279,7 +279,7 @@ as you encounter information which needs to be organized in its own topic.</p>
 using proper ReStructuredText markup with added Sphinx features. Refer to the
 following resources to learn about document syntax:</p>
 <ul class="simple">
-<li>Vstem-Davenport&#8217;s <a class="reference external" href="http://vstem-davenport.github.com/doc-publish/05_structure.html">guide to basic ReStructuredText syntax</a>.</li>
+<li>Davenport&#8217;s <a class="reference internal" href="rst_syntax.html#rst-syntax"><em>guide to basic ReStructuredText syntax</em></a>.</li>
 <li><a class="reference external" href="http://sphinx-doc.org/index.html">The official Sphinx-doc documentation site</a>.</li>
 </ul>
 </div>
@@ -387,7 +387,7 @@ documentation in a <strong>gh-pages</strong> branch is:</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="09_use-rubyonrails.html" title="Ruby on Rails Sample App"
+          <a href="09_use-heroku.html" title="Using Heroku"
              >next</a></li>
         <li class="right" >
           <a href="07_use-cloud9.html" title="Using Cloud9"

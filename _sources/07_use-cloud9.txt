@@ -16,18 +16,19 @@ copy of a project repository will be cloned into the Cloud9 development space.
 Clone a Remote Project
 =============================
 
-+ Login to your Cloud9 session at https://c9.io/
-+ Under :menuselection:`PROJECTS ON GITHUB`, click a project name
++  Login to your Cloud9 session at https://c9.io/
++  Under :menuselection:`PROJECTS ON GITHUB`, click a project name
 
-  .. image:: _images/07_cloud9-1.png
+   .. image:: _images/07_cloud9-1.png
 
-+ Click button :guilabel:`CLONE TO EDIT` 
-+ Click button :guilabel:`CREATE` to create a workspace in :menuselection:`MY PROJECTS`
++  Click button :guilabel:`CLONE TO EDIT` 
++  Click button :guilabel:`CREATE` to create a workspace in 
+   :menuselection:`MY PROJECTS`
 
-  .. image:: _images/07_cloud9-2.png
+   .. image:: _images/07_cloud9-2.png
 
-+ Click button :guilabel:`START EDITING`; the Cloud9 edit space will display
-+ Double-click a document name in the left-hand file list to edit the document
++  Click button :guilabel:`START EDITING`; the Cloud9 edit space will display
++  Double-click a document name in the left-hand file list to edit the document
 
 Git and GitHub Integration
 =============================
@@ -35,7 +36,7 @@ Git and GitHub Integration
 The clever developers at Cloud9 have integrated many functions into the 
 workspace menu. For example, Git functions can be run from there:
 
-  .. image:: _images/07_cloud9-3.png
+   .. image:: _images/07_cloud9-3.png
 
 Missing from the Git menu selections is the ``git add .`` command. Fortunately
 there is an embedded command line at the bottom of the Cloud9 workspace where 
@@ -50,7 +51,7 @@ Track current changes
 
 Make git aware of current changes with the command::
 
-  git add .
+   git add .
 
 The "dot" means track everything in a project directory. Name specific files 
 if everything is not desired. Exclude categories of files from tracking with  
@@ -61,7 +62,7 @@ See changes being tracked
 
 ::
 
-  git status
+   git status
 
 Shows what git has staged to be committed based on :command:`add` commands.
 
@@ -70,7 +71,7 @@ Undo an add
 
 Clear staged content which you do not want to add with the command::
 
-  git reset
+   git reset
 
 Rename a project file
 -----------------------------
@@ -78,23 +79,23 @@ Rename a project file
 Always use git to move or rename a tracked file. The syntax is the same as 
 Linux :command:`mv` command, but proceded with :command:`git`::
 
-  git mv old_filename.rst new_filename.rst
+   git mv old_filename.rst new_filename.rst
 
 Delete a project file
 -----------------------------
 
 As with moving a tracked file, use a :command:`git` command when deleting::
 
-  git rm bad_filename.rst
+   git rm bad_filename.rst
 
 Commit changes to repository
 -----------------------------
 
 Periodically add and commit completed content to your local repository::
 
-  git add .
-  git status
-  git commit -m "type a brief message here describing your changes"
+   git add .
+   git status
+   git commit -m "type a brief message here describing your changes"
 
 Remote Repository Updates
 =============================
@@ -105,7 +106,7 @@ Pull remote content
 Before starting a day's work, synchronize your local repository copy to the 
 remote master repository::
 
-  git pull
+   git pull
 
 Push local content
 -----------------------------
@@ -113,11 +114,11 @@ Push local content
 When local content is synchronized with master changes, tested, and committed 
 locally, then push the content commits to the remote master::
 
-  git push
+   git push
 
 .. Note:: If git requires a user password in the :command:`git push` command,
-  then an ssh key is missing at GitHub. Follow GitHub directions to add the 
-  missing key. 
+   then an ssh key is missing at GitHub. Follow GitHub directions to add the 
+   missing key. 
 
 Upstream Repositories
 =============================
@@ -125,11 +126,11 @@ Upstream Repositories
 When a repository is a fork of a master, changes to the master can be updated 
 to the fork as follows. First, an ``upstream`` remote must be added::
 
-  git remote add upstream __remotename__
+   git remote add upstream __remotename__
 
 Then synchronize the local repository with the commands::
 
-  git commit -a "commit current changes"
-  git pull upstream master
+   git commit -a "commit current changes"
+   git pull upstream master
 
 Finally, refresh the file tree view in cloud9 to show new or changed files.
