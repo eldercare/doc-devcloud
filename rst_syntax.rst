@@ -78,7 +78,7 @@ Inline Markup Directives
 +----------------------------------+-----------------------------------------------+
 | \:file\:\`../path/to/file\`      | :file:`../path/to/file`                       |
 +----------------------------------+-----------------------------------------------+
-| \:download\:\`script <path.sh>\` |:download:`script <_downloads/rest-install.sh>`|
+| \:download\:\`script <path.sh>\` | :download:`script <_downloads/doc-deploy.sh>` |
 +----------------------------------+-----------------------------------------------+
 | \:ref\:\`Tables <tables_label>\` | :ref:`Tables <tables_label>`                  |
 +----------------------------------+-----------------------------------------------+
