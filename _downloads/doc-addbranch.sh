@@ -25,7 +25,9 @@ sphinxinit () {
 
   # create directories and keep for git
   for DIR in $DIRS ; do
-    mkdir $DIR
+    if [[ ! -d $DIR ]] ; then
+      mkdir $DIR
+    fi
     touch $DIR/$KEEP
   done
 
@@ -151,11 +153,11 @@ echo "Finished creating directories and files for project \"$PROJECT\"."
 echo
 echo "Edit main \".gitignore\" file to ignore \"_build\", \"_deploy\" folders."
 if [[ ! $SECTIONS = "" ]] ; then
-  echo "Edit main index to reference $SECTIONS"
+  echo "Edit master index to reference"
+  echo "$SECTIONS"
 fi
 echo "Start each indexable document with a numeric digit."
 echo "Edit index files to glob \"[0-9]*\"."
 exit
 
 # Authors: Gerald Lovel, gerald@lovels.us
-
