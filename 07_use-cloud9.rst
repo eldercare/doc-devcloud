@@ -4,7 +4,7 @@
  Using Cloud9
 #############################
 
-.. note:: The Cloud9 editor has a simple command line space at the bottom, as 
+.. note:: journal BS The Cloud9 editor has a simple command line space at the bottom, as 
    well as a complete Linux console terminal. The Firefox web browser will not 
    paste into a Cloud9 terminal session. When using cut-and-paste to execute
    commands, paste into the editor command line instead.
